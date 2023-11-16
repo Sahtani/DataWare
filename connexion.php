@@ -1,12 +1,26 @@
-<?php
-//CONNEXION AVEC LA BASE DE DONNEES
+<?php 
+
+try {
+    
 $server = "localhost";
 $user = "root";
-$password = "";
-$db = "dataware";
+$password = "soumia";
+$db = 'dataware';
+$connect = new mysqli($server, $user, $password, $db);
 
-$connect = mysqli_connect($server, $user, $password, $db);
 
-if (!$connect) {
-    die("La connexion a échoué avec la base de données: " . mysqli_connect_error());
+if ($connect->connect_error) {
+die("La connexion a échoué avec la base de données: " . $connect->connect_error);
+}else{
+echo "Connexion réussie avec la base de données.";
 }
+} catch (mysqli_sql_exception $e) {
+    echo "Erreur de connexion : " . $e->getMessage();
+}
+
+
+
+
+// Close the connection
+//$connect->close();
+?>
