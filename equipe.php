@@ -57,3 +57,14 @@ while($row = mysqli_fetch_row($result)){
                 </tfoot>
         </table>
     </div>
+    </div>
+    <div class="mt-10 ml-8">
+        <a href="index.php">
+            <button class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">table membre</button>
+        </a>
+
+    </div>
+</body>
+
+
+</html

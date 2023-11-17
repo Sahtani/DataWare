@@ -1,6 +1,9 @@
 <?php
 include('connexion.php');
 ?>
+<?php
+include('connexion.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,44 +41,47 @@ include('connexion.php');
                         statut
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Equipe
+                        Nom d'équipe
+                    </th>
+                    <th scope="col" class="px-6 py-3 ">
+                        Date de céation
                     </th>
                 </tr>
-
             </thead>
             <!-- rows -->
             <tbody>
                 <?php
-$query = "SELECT * FROM membre";
-$result = mysqli_query($conn, $query);
-
-
-
-while($row = mysqli_fetch_row($result)){
+$sql = "SELECT membre.Nom_Membre, membre.Prenom_Membre, membre.email, membre.Tel, membre.Role, membre.statut, equipes.Nom_equipe,equipes.Date_Creation FROM membre inner JOIN equipes ON membre.ID_equipe = equipes.ID_equipe";
+$res= mysqli_query($conn, $sql);
+while($row=mysqli_fetch_assoc($res)){
 
     ?>
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <?php echo $row[1]?>
+                        <?php echo $row['Nom_Membre']?>
                     </th>
                     <td class=" px-6 py-4">
-                        <?php echo $row[2]?>
+                        <?php echo $row['Prenom_Membre']?>
                     </td>
                     <td class="px-6 py-4">
-                        <?php echo $row[3]?>
+                        <?php echo $row['email']?>
                     </td>
                     <td class="px-6 py-4">
-                        <?php echo $row[4]?>
+                        <?php echo $row['Tel']?>
                     </td>
                     <td class="px-6 py-4">
-                        <?php echo $row[5]?>
+                        <?php echo $row['Role']?>
                     </td>
                     <td class="px-6 py-4">
-                        <?php echo $row[6]?>
+                        <?php echo $row['statut']?>
                     </td>
                     <td class="px-6 py-4">
-                        <?php echo $row[7]?>
+                        <?php echo $row['Nom_equipe']?>
                     </td>
+                    <td class="px-6 py-4">
+                        <?php echo $row['Date_Creation']?>
+                    </td>
+
 
 
                 </tr>
